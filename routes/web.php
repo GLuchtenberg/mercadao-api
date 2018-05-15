@@ -15,8 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'v1'],function (){
-    Route::apiResource([
-        'product' => 'ProductController'
-    ]);
-});
+Route::resource('product','ProductController');
