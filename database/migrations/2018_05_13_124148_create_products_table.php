@@ -19,7 +19,11 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->text('description');
             $table->string('image');
+<<<<<<< HEAD
             $table->string('categoria');
+=======
+            $table->string('category');
+>>>>>>> alterações nas migrations
             $table->date('fabricacao');
             $table->date('validade');
             $table->timestamps();
