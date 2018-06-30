@@ -36,7 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product($request->except('_token'));
+        $product = new Product($request->except('_token'));       
         $product->save();
         return redirect()->route('product.index');
     }

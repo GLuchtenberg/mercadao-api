@@ -25,9 +25,17 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="price">Preço</label>
-                    <input type="number" class="form-control" name="price" id="price" value="{{isset($product->price) ? $product->price: null}}">
+                    <input type="number" step="0.01" class="form-control" name="price" id="price" value="{{isset($product->price) ? $product->price: null}}">
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="image">Imagem</label>
+                    <input type="text"  class="form-control" name="image" id="image" value="{{isset($product->image) ? $product->image: null}}">
+                </div>
+            </div>
+
+
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>

@@ -9,7 +9,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Preço</th>
@@ -19,7 +19,7 @@
                 <tbody>
                 @forelse($products as $product)
                     <tr id="tr-{{$product->id}}">
-                        <td>{{$product->image}}</td>
+                        <td> <img class="thumbnail" style="width:30%" src="{{$product->image}}"></td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->description}}</td>
                         <td>{{$product->price}}</td>
