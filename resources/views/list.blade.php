@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <a href="{{route('product.create')}}" class="btn btn-primary">Novo produto</a>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
 
             <table class="table">
                 <thead>
@@ -19,10 +19,10 @@
                 <tbody>
                 @forelse($products as $product)
                     <tr id="tr-{{$product->id}}">
-                        <td> <img class="thumbnail" style="width:30%" src="{{$product->image}}"></td>
+                        <td> <img class="thumbnail" src="{{$product->image_path}}"></td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->description}}</td>
-                        <td>{{$product->price}}</td>
+                        <td>R$ {{$product->price}}</td>
                         <td  scope="row">
                             <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary">Editar</a>
                             <a href="#" class="btn btn-danger" onclick="deletar('{{$product->id}}')">Excluir</a>
@@ -39,10 +39,19 @@
     </div>
 @endsection
 
+@section('styles')
+    <style>
+        td img{
+            max-height: 80px;
+        }
+        tr:hover{
+            background: #d4d4d4;
+        }
+    </style>
+@append
 @section('scripts')
     <script>
         function deletar (id){
-
             window.console.log(id);
             $.ajax({
                 url: '/product/'+id,

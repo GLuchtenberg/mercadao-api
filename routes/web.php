@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('product','ProductController')->middleware('auth');
+
+Route::group(['prefix'=>'admin'],function(){
+    Route::resource('product','ProductController')->middleware('auth');
+});
 
 Auth::routes();
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
@@ -34,10 +37,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $product = new Product($request->except('_token'));       
-        $product->save();
+        $this->saveProduct($request);
         return redirect()->route('product.index');
     }
 
@@ -60,6 +62,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+
         $product = Product::find($id);
         return view('form', compact('product'));
     }
@@ -71,11 +74,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $product = Product::find($id);
-        $product->fill($request->all());
-        $product->save();
+        $this->saveProduct($request,$product);
+        /*$product->fill($request->all());
+        $product->save();*/
         return redirect()->route('product.index');
     }
 
@@ -91,5 +95,26 @@ class ProductController extends Controller
         $product->delete();
 
         return response()->json(['id' => $id]);
+    }
+
+    public function saveProduct($request,$product = null)
+    {
+        if(!$product){
+            $product = new Product();
+        }
+        $product->fill($request->all());
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = md5(str_random('16')).'.'.$extension;
+            $file->move(Product::IMAGE_PATH, $filename);
+            if($product->image){
+                File::delete(Product::IMAGE_PATH.$product->image);
+            }
+            $product->image = $filename;
+        }
+        $product->save();
+        return $product;
     }
 }

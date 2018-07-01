@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('category');
             $table->date('fabrication');
-            $table->date('shelf_life');
+            $table->date('expiration');
             $table->timestamps();
         });
     }
