@@ -1,12 +1,12 @@
 @extends('master')
 @section('content')
-    <div class="row">
+    <div class="row" style="margin-top: 10px" >
         <div class="col-md-12">
             <a href="{{route('product.create')}}" class="btn btn-primary">Novo produto</a>
         </div>
         <div class="col-md-12">
 
-            <table class="table">
+            <table class="table" style="margin-top: 10px">
                 <thead>
                 <tr>
                     <th scope="col">Imagem</th>

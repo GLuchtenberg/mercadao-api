@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
@@ -78,8 +76,6 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $this->saveProduct($request,$product);
-        /*$product->fill($request->all());
-        $product->save();*/
         return redirect()->route('product.index');
     }
 
