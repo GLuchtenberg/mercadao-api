@@ -17,17 +17,15 @@
                                 <input type="text" id="name" class="form-control" name="name"
                                        value="{{isset($product->name) ? $product->name  : null}}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="form-group">
-                                <label for="description">Descrição</label>
-                                <input type="text" class="form-control" name="description" id="description"
-                                       value="{{isset($product->description) ? $product->description: null}}">
+                            <div class="form-group" style="margin-left: 15px">
+                                <label for="manufacturer">Fabricante</label>
+                                <input type="text" class="form-control" name="manufacturer" id="manufacturer"
+                                       value="{{isset($product->manufacturer) ? $product->manufacturer: null}}">
                             </div>
+                            
                         </div>
                     </div>
+                  
                     <div class="col-md-12">
                         <div class="row">
                             <div class="form-group">
@@ -35,18 +33,40 @@
                                 <input type="text" class="form-control" name="category" id="category"
                                        value="{{isset($product->category) ? $product->category: null}}">
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="form-group">
+                            <div class="form-group" style="margin-left: 15px">
                                 <label for="price">Preço</label>
                                 <input type="number" step="0.01" class="form-control" name="price" id="price"
                                        value="{{isset($product->price) ? $product->price: null}}">
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="quantity">Quantidade</label>
+                                <input type=""  class="form-control" name="quantity" id="quantity"
+                                       value="{{isset($product->quantity) ? $product->quantity: null}}">
+                            </div>
+                            <div class="form-group"  style="margin-left: 15px">
+                                <label for="measurement_unit">Unidade de medida</label>
+                                <input type=""  class="form-control" name="measurement_unit" id="measurement_unit"
+                                       value="{{isset($product->measurement_unit) ? $product->measurement_unit: null}}">
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-6">
+                        <div class="row">
+                            
+                            <div class="form-group"  >
+                                <label for="description">Descrição</label>
+                                <input type="text" class="form-control" name="description" id="description"
+                                       value="{{isset($product->description) ? $product->description: null}}">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -82,6 +102,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </form>
 @endsection

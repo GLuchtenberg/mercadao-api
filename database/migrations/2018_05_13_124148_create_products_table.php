@@ -22,6 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->date('fabrication');
             $table->date('expiration');
+            $table->string('manufacturer');
+            $table->string('measurement_unit');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

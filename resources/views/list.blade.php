@@ -11,6 +11,10 @@
                 <tr>
                     <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col">Unidade de medida</th>
+                    <th scope="col">Quantidade</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Ações</th>
@@ -21,6 +25,10 @@
                     <tr id="tr-{{$product->id}}">
                         <td> <img class="thumbnail" src="{{$product->image_path}}"></td>
                         <td>{{$product->name}}</td>
+                        <td>{{$product->category}}</td>
+                        <td>{{$product->manufacturer}}</td>
+                        <td>{{$product->measurement_unit}}</td>
+                        <td>{{$product->quantity}}</td>
                         <td>{{$product->description}}</td>
                         <td>R$ {{$product->price}}</td>
                         <td  scope="row">
