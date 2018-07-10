@@ -7,7 +7,9 @@
         <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
             @endif
             {!! csrf_field() !!}
+
             <div class="row" style="margin-top: 10px" >
+
                 <div class="col-md-5">
                     <div class="col-md-12">
                         <div class="row">
@@ -113,4 +115,3 @@
         }
     </style>
 @append
-{{--'name','description','price','image'--}}
