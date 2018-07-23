@@ -11,9 +11,10 @@
                 <tr>
                     <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Fabricante</th>
-                        <th scope="col">Unidade de medida</th>
+                    <th scope="col">Cod. Barra</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Fabricante</th>
+                    <th scope="col">Unidade de medida</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Preço</th>
@@ -25,6 +26,7 @@
                     <tr id="tr-{{$product->id}}">
                         <td> <img class="thumbnail" src="{{$product->image_path}}"></td>
                         <td>{{$product->name}}</td>
+                        <td>{{$product->barcode}}</td>
                         <td>{{$product->category}}</td>
                         <td>{{$product->manufacturer}}</td>
                         <td>{{$product->measurement_unit}}</td>
@@ -33,7 +35,7 @@
                         <td>R$ {{$product->price}}</td>
                         <td  scope="row">
                             <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary">Editar</a>
-                            <a href="#" class="btn btn-danger" onclick="deletar('{{$product->id}}')">Excluir</a>
+                            <a href="#" class="btn btn-danger" onclick=" deletar('{{$product->id}}')">Excluir</a>
                         </td>
                     </tr>
                 @empty
@@ -60,9 +62,10 @@
 @section('scripts')
     <script>
         function deletar (id){
-            window.console.log(id);
+            if(confirm('Are you sure?')){
+                window.console.log(id);
             $.ajax({
-                url: '/product/'+id,
+                url: '/admin/product/'+id,
                 type: 'post',
                 data: {_method: 'delete'},
                 success: function(result){
@@ -70,6 +73,11 @@
                     $('#tr-'+result.id).remove();
                 }
             });
+
+            }else{
+                return;
+            }
+            
         }
 
     </script>

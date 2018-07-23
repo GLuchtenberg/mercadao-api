@@ -56,7 +56,7 @@
                         </div>
                     </div>
                    
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="row">
                             
                             <div class="form-group"  >
@@ -64,25 +64,14 @@
                                 <input type="text" class="form-control" name="description" id="description"
                                        value="{{isset($product->description) ? $product->description: null}}">
                             </div>
+                            <div class="form-group"  style="margin-left: 15px"  >
+                                <label for="barcode">Cod. barra</label>
+                                <input type="text" class="form-control" name="barcode" id="barcode"
+                                       value="{{isset($product->barcode) ? $product->barcodephp: null}}">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="fabrication">Data de fabricação </label>
-                                <input type="date" name="fabrication" id="fabrication"
-                                        value="{{isset($product->fabrication) ? $product->fabrication: null}}">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="expiration">Data de validade </label>
-                                <input type="date" name="expiration" id="expiration"
-                                       value="{{isset($product->expiration) ? $product->expiration: null}}">
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="row">
                             <button type="submit" class="btn btn-primary">Salvar</button>

@@ -23,6 +23,7 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
@@ -31,7 +32,6 @@ class ProductController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

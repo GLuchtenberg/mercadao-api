@@ -20,6 +20,11 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('product','ProductController')->middleware('auth');
 });
 
+Route::group(['prefix'=>'admin'],function(){
+    Route::resource('category','CategoryController')->middleware('auth');
+});
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
