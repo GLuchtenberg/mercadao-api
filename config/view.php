@@ -1,5 +1,5 @@
 <?php
-
+$teste = 0;
 return [
 
     /*
