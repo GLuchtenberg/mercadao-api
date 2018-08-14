@@ -4,11 +4,10 @@
 <div class="container" style="margin-top: 100px">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="background-color: #">
+            <div class="card" style="background-color: #" >
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                    <form method="POST" class="teste" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
 
                         <div class="form-group row">
