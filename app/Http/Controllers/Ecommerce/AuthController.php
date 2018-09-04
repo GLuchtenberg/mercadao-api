@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ecommerce;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $http = new \GuzzleHttp\Client;
+
         try {
             $response = $http->post(env('LOGIN_ENDPOINT'), [
                 'form_params' => [
@@ -49,10 +51,11 @@ class AuthController extends Controller
 
     public function logout()
     {
+
         auth()->user()->tokens->each(function ($token,$key){
             $token->delete();
         });
 
-        return reponse()->json('Logged out successfully',200);
+        return response()->json('Logged out successfully');
     }
 }
