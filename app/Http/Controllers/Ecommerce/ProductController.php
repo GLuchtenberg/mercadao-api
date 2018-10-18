@@ -6,6 +6,7 @@ use App\Http\Repositories\ProductRepository;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Product as ProductResource;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return $this->productRepo->getFiltered(request()->all());
+        return ProductResource::collection($this->productRepo->getFiltered(request()->all()));
     }
 
     /**
@@ -45,13 +46,13 @@ class ProductController extends Controller
      * @return
      */
     public function show( $product )
-    {
-        return $this->productRepo->findByID( $product );
+    { 
+        return new ProductResource($this->productRepo->findByID( $product ));
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     *  
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
@@ -70,5 +71,9 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function related(Product $product){
+        return ProductResource::collection($this->productRepo->related($product));
     }
 }

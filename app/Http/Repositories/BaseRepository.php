@@ -81,6 +81,7 @@ abstract class BaseRepository
      */
     public function findByID($id, $fail = true)
     {
+        
         if ($fail) {
             return $this->newQuery()->findOrFail($id);
         }

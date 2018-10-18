@@ -18,4 +18,9 @@ class Product extends Model
         return $this->morphMany(FileEntry::class,'canbefiled');
     }
 
+    public function category()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
+
 }

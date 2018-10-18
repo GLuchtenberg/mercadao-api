@@ -14,6 +14,7 @@ class AuthController extends Controller
         $http = new \GuzzleHttp\Client;
 
         try {
+            
             $response = $http->post(env('LOGIN_ENDPOINT'), [
                 'form_params' => [
                     'grant_type' => 'password',
@@ -25,12 +26,15 @@ class AuthController extends Controller
             ]);
             return $response->getBody();
         } catch (\GuzzleHttp\Exception\BadResponseExceptionException $e) {
+            
             if ($e->getCode() == 400) {
                 return response()->json('Invalid request', $e->getCode());
             } else if ($e->getCode() == 401) {
                 return response()->json('Invalid credentials', $e->getCode());
             }
             return response()->json('Something went wrong on the server', $e->getCode());
+        } catch(\Exception $e){
+            return response()->json($e->getMessage(),$e->getCode());
         }
     }
 

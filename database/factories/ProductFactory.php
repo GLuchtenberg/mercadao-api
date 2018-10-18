@@ -6,6 +6,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
     $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
     return [
         'name'=> $faker->productName,
+        'category_id' => $faker->numberBetween(1,2),
         'barcode' => $faker->text(191),
         'description'=> $faker->text(),
         'price'=> $faker->randomFloat(2,5,500),

@@ -23,4 +23,5 @@ Route::group(['prefix'=>'ecommerce','namespace'=>'Ecommerce'],function(){
         Route::post('logout','AuthController@logout');
     });
     Route::apiResource('products','ProductController');
+    Route::get('products/related/{product}','ProductController@related');
 });

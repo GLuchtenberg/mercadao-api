@@ -39,4 +39,9 @@ class ProductRepository extends BaseRepository implements ICanBeFiled
     {
         return self::CONFIG_FILEPATH;
     }
+
+    public function related(Product $product){
+        $query = $this->newQuery()->where('category_id',$product->category->id)->where('id','<>',$product->id)->inRandomOrder();
+        return $this->doQuery($query,4,false);
+    }
 }
