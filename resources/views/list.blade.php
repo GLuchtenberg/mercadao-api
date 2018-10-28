@@ -27,7 +27,7 @@
                         <td> <img class="thumbnail" src="{{$product->image_path}}"></td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->barcode}}</td>
-                        <td>{{$product->category}}</td>
+                        <td>{{$product->category->name}}</td>
                         <td>{{$product->manufacturer}}</td>
                         <td>{{$product->measurement_unit}}</td>
                         <td>{{$product->quantity}}</td>

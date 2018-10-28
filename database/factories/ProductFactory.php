@@ -10,10 +10,9 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'barcode' => $faker->text(191),
         'description'=> $faker->text(),
         'price'=> $faker->randomFloat(2,5,500),
-        'image'=> $faker->imageUrl(),
+        'image'=> null,
         'manufacturer'=> $faker->company,
         'measurement_unit'=> 'KG',
         'quantity'=> $faker->numberBetween(0,250)
-
     ];
 });

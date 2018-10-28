@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Product;
+
 
 class ProductRequest extends FormRequest
 {
@@ -23,14 +25,17 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        $product = Product::find($this->route('product'));
+
         return [
-            'image' => 'required|file',
+            'image' => 'file',
             'name' => 'required|min:3',
             'description' => 'required',
             'price' => 'required|numeric',
             'category' => 'required',
-            'fabrication' => 'required|date',
-            'expiration' => 'required|date',
+            'fabrication' => 'date',
+            'expiration' => 'date',
+            'barcode' => 'required|numeric|unique:products,barcode,'.$product->barcode.',barcode',
         ];
     }
 
@@ -45,7 +50,10 @@ class ProductRequest extends FormRequest
             'price.required' => 'preço é obrigatório',
             'category.required' => 'categoria é obrigatório',
             'fabrication.required' => 'data de fabricação é obrigatório',
-            'expiration.required' => 'Data de validade é obrigatório'
+            'expiration.required' => 'Data de validade é obrigatório',
+            'barcode.required' => "Código de barras é obrigatório",
+            'barcode.numeric' => "Código de barras deve ser numérico",
+            'barcode.unique' => "Código de barras deve ser único",
         ];
     }
 

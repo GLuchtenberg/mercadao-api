@@ -9,13 +9,21 @@
             {!! csrf_field() !!}
 
             <div class="row" style="margin-top: 10px" >
-
+                
+                
                 <div class="col-md-5">
                     <div class="col-md-12">
                         <div class="row">
+                            @forelse($errors->all() as $erro)
+                            <span style="color:red">
+                                {{$erro}}
+                            </span>
+                            @empty
+                            @endforelse
+                        </div>
+                        <div class="row">
                             <div class="form-group">
                                 <label for="name">Nome</label>
-
                                 <input type="text" id="name" class="form-control" name="name"
                                        value="{{isset($product->name) ? $product->name  : null}}">
                             </div>
@@ -32,8 +40,13 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="category">Categoria</label>
-                                <input type="text" class="form-control" name="category" id="category"
-                                       value="{{isset($product->category) ? $product->category: null}}">
+                                <!-- <input type="text" class="form-control" name="category" id="category"
+                                       value="{{isset($product->category) ? $product->category: null}}"> -->
+                                <select class="form-control" name="category" id="">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}" @if(isset($product) && $category->id == $product->category_id) selected @endif >{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group" style="margin-left: 15px">
                                 <label for="price">Preço</label>
@@ -52,8 +65,13 @@
                             </div>
                             <div class="form-group"  style="margin-left: 15px">
                                 <label for="measurement_unit">Unidade de medida</label>
-                                <input type=""  class="form-control" name="measurement_unit" id="measurement_unit"
-                                       value="{{isset($product->measurement_unit) ? $product->measurement_unit: null}}">
+                                <!-- <input type=""  class="form-control" name="measurement_unit" id="measurement_unit"
+                                       value="{{isset($product->measurement_unit) ? $product->measurement_unit: null}}"> -->
+                                <select name="measurement_unit" class="form-control" id="">
+                                    <option value="KG">KG</option>
+                                    <option value="Mg">MG</option>
+
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -69,7 +87,16 @@
                             <div class="form-group"  style="margin-left: 15px"  >
                                 <label for="barcode">Cod. barra</label>
                                 <input type="text" class="form-control" name="barcode" id="barcode"
-                                       value="{{isset($product->barcode) ? $product->barcodephp: null}}">
+                                       value="{{isset($product->barcode) ? $product->barcode: null}}">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="row">  
+                            <div class="form-group"  >
+                            <label for="manufacturer ">Fabricante </label>
+                            <input type="text" class="form-control" name="manufacturer" id="manufacturer" value="{{isset($product->manufacturer) ? $product->manufacturer: null}}">
                             </div>
                         </div>
                     </div>

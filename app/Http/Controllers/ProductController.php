@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Category;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -27,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('form');
+        $categories = Category::orderBy('name')->get();
+        return view('form',compact('categories'));
     }
 
     /**
@@ -60,9 +62,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-
         $product = Product::find($id);
-        return view('form', compact('product'));
+        $categories = Category::orderBy('name')->get();
+        return view('form', compact('product','categories'));
     }
 
     /**
@@ -99,6 +101,7 @@ class ProductController extends Controller
             $product = new Product();
         }
         $product->fill($request->all());
+        $product->category_id = $request->get('category');
         if($request->hasfile('image'))
         {
             $file = $request->file('image');

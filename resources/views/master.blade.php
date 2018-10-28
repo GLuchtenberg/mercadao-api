@@ -15,9 +15,7 @@
     <div id="app">
         @include('header')
         <main role="main" class="container" >
-        <passport-clients></passport-clients>
-        <passport-authorized-clients></passport-authorized-clients>
-        <passport-personal-access-tokens></passport-personal-access-tokens>
+        
                 @yield('content')
         </main>
         @include('footer')
