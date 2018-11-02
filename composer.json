@@ -53,7 +53,7 @@
         ],
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "php artisan passport:keys"
+            "php artisan passport:install"
         ],
         "post-autoload-dump": [
             "@php artisan package:discover"
