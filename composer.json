@@ -52,7 +52,9 @@
             "@php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan migrate --force"
+            "php artisan clear-compiled",
+            "chmod -R 777 storage",
+            "php artisan passport:keys"
         ],
         "post-autoload-dump": [
             "@php artisan package:discover"
