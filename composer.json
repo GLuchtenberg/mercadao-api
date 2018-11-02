@@ -52,11 +52,7 @@
             "@php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan optimize",
             "php artisan migrate --force"
-        ],
-        "post-update-cmd": [
-            "php artisan optimize"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
