@@ -53,7 +53,7 @@
         ],
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "php artisan passport:install"
+            "chmod -R 777 storage"
         ],
         "post-autoload-dump": [
             "@php artisan package:discover"
