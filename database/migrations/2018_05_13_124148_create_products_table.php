@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('barcode');
             $table->float('price');
             $table->text('description');
-            $table->string('image');
-            $table->integer('category');
+            $table->string('image')->nullable();
+            $table->integer('category_id');
             $table->string('manufacturer');
             $table->string('measurement_unit');
             $table->integer('quantity');

@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $product = Product::find($this->route('product'));
+        $barcode =!empty($product)? $product->barcode : null;
 
         return [
             'image' => 'file',
@@ -35,7 +36,7 @@ class ProductRequest extends FormRequest
             'category' => 'required',
             'fabrication' => 'date',
             'expiration' => 'date',
-            'barcode' => 'required|numeric|unique:products,barcode,'.$product->barcode.',barcode',
+            'barcode' => 'required|numeric|unique:products,barcode,'. $barcode.',barcode',
         ];
     }
 
